@@ -60,6 +60,16 @@ pipeline {
       }
     }
 
+    stage('Prod Approval1') {
+      steps {
+        script {
+          if (env.BRANCH_NAME == "master") {
+            input('Proceed for Prod Deployment ?')
+          }
+        }
+      }
+    }
+
     stage('Deploy to Prod') {
       when { branch 'master'}
       steps { 
