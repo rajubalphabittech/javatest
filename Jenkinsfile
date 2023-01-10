@@ -36,6 +36,14 @@ pipeline {
       steps {
           echo 'Test'
         }
+    }stage('Prod Approval') {
+      steps {
+        script {
+          if (env.BRANCH_NAME == "master") {
+            input('Proceed for Prod Deployment ?')
+          }
+        }
+      }
     }
 
     stage('Deploy to UAT') {
