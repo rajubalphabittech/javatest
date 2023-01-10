@@ -36,7 +36,8 @@ pipeline {
       steps {
           echo 'Test'
         }
-    }stage('Prod Approval') {
+    }
+    stage('Prod Approval') {
       steps {
         script {
           if (env.BRANCH_NAME == "master") {
